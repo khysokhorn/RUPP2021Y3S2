@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('home');
+Route::get('/about', [App\Http\Controllers\PageController::class, 'aboutPage'])->name('pages.about');
+Route::get('/contact', [App\Http\Controllers\PageController::class, 'contactPage'])->name('pages.contact');
+Route::get('/post/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.detail');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
