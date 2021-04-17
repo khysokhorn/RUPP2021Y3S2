@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('home');
-Route::get('/about', [App\Http\Controllers\PageController::class, 'aboutPage'])->name('pages.about');
-Route::get('/contact', [App\Http\Controllers\PageController::class, 'contactPage'])->name('pages.contact');
-Route::get('/post/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.detail');
+Route::group(['web'], function() {
+    Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('home');
+    Route::get('/about', [App\Http\Controllers\PageController::class, 'aboutPage'])->name('pages.about');
+    Route::get('/contact', [App\Http\Controllers\PageController::class, 'contactPage'])->name('pages.contact');
+    Route::get('/post/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('posts.detail');    
+
+    Route::post('/forms/contact', [App\Http\Controllers\FormController::class, 'contactSubmit'])->name('forms.contact_submit');
+});
 
 Auth::routes();

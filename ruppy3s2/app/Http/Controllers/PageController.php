@@ -16,8 +16,11 @@ class PageController extends Controller
         return view('pages.about');
     }
 
-    public function contactPage()
+    public function contactPage(Request $request)
     {
-        return view('pages.contact');
+        $success = $request->get('success');
+        return view('pages.contact', [
+            'success' => $success
+        ]);
     }
 }
