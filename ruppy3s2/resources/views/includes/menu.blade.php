@@ -20,6 +20,10 @@
             <a class="nav-link" href="{{ route('pages.contact') }}">Contact</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+          </li>
+
           @if(Auth::user())
             <form id="frmLogout" action="{{ url('/logout') }}" method="POST">
               @csrf
